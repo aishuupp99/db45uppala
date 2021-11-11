@@ -1,0 +1,26 @@
+{
+  "name": "fwb45uppala",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "^4.3.2",
+    "express": "^4.17.1",
+    "http-errors": "^1.8.0",
+    "mongodb": "^4.1.4",
+    "mongoose": "^6.0.12",
+    "morgan": "^1.10.0",
+    "pug": "^3.0.2"
+  },
+  "description": "Lab09",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "\\"
+  },
+  "author": "AshwiniUppala",
+  "license": "ISC"
+}
