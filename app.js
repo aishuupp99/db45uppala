@@ -47,14 +47,14 @@ Language({"Types":"Java", "NumberOfLang":2,"Data":"Primitive"});
  Language({"Types":"Python", "NumberOfLang":"1","Data":"Dictionary"});
   instance2.save( function(err,doc) {
   if(err) return console.error(err);
-  console.log("First object saved")
+  console.log("Second object saved")
   });
 
  let instance3 = new
 Language({"Types":"C", "NumberOfLang":"3","Data":"String"});
  instance3.save( function(err,doc) {
  if(err) return console.error(err);
- console.log("First object saved")
+ console.log("Third object saved")
  });
 }
 let reseed = true;
