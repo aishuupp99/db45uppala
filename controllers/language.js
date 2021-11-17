@@ -36,9 +36,19 @@ exports.language_create_post = async function(req, res) {
     }
    }
 // Handle Language delete form on DELETE.
-exports.language_delete = function(req, res) {
- res.send('NOT IMPLEMENTED: Language delete DELETE ' + req.params.id);
-};
+// Handle language delete on DELETE. 
+exports.language_delete = async function(req, res) { 
+    console.log("delete "  + req.params.id) 
+    try { 
+        result = await language.findByIdAndDelete( req.params.id) 
+        console.log("Removed " + result) 
+        res.send(result) 
+    } catch (err) { 
+        res.status(500) 
+        res.send(`{"error": Error deleting ${err}}`); 
+    } 
+}; 
+
 // Handle Language update form on PUT.
 exports.language_update_put =  async function(req, res) { 
     console.log(`update on id ${req.params.id} with body 
@@ -83,3 +93,30 @@ exports.language_detail = async function(req, res) {
     } 
 }; 
    
+ // Handle a show one view with id specified by query 
+ exports.language_view_one_Page = async function(req, res) { 
+    console.log("single view for id "  + req.query.id) 
+    try{ 
+        result = await language.findById( req.query.id) 
+        res.render('languagedetail',  
+{ title: 'language Detail', toShow: result }); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+};
+
+// Handle building the view for creating a language. 
+// No body, no in path parameter, no query. 
+// Does not need to be async 
+exports.language_create_Page =  function(req, res) { 
+    console.log("create view") 
+    try{ 
+        res.render('languagecreate', { title: 'language Create'}); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 

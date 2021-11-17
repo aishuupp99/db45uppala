@@ -1,0 +1,23 @@
+
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  - let languageid = toShow._id 
+  - let Types = toShow.Types 
+  - let NumberOfLang = toShow.NumberOfLang 
+  - let Data = toShow.Data
+  div 
+    div.row 
+      div(class='languageAttr mr-3') language ID is: 
+      div #{languageid} 
+    div.row 
+      div(class='languageAttr mr-3') Types is: 
+      div #{Types} 
+    div.row 
+      div(class='languageAttr mr-3') NumberOfLang is: 
+      div #{NumberOfLang} 
+    div.row 
+      div(class='languageAttr mr-3') Data is: 
+      div #{Data} 
