@@ -3,16 +3,16 @@ extends layout
 block content 
   h1= title 
  
-  form(id='languageForm', action="/resource/language", method="POST") 
+  form(id='languageForm', action="/resource/languages", method="POST") 
     div.form-group 
         label.languageAttr(for='language_type') language type 
         input#Types(type='text', name='language_type') 
     div.form-group 
-        label.languageAttr(for='NumberOfLang') NumberOfLang 
-        input#size(type='text', name='size') 
+        label.languageAttr(for='size') NumberOfLang 
+        input#size(type='number', name='size') 
     div.form-group 
-        label.languageAttr(for='Data') Data 
-        input#cost(type='number', name='Data') 
+        label.languageAttr(for='cost') Data 
+        input#cost(type='text', name='cost') 
     input(type="submit") 
  
   script. 

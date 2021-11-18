@@ -2,7 +2,8 @@ extends layout
 
 block content
   h1=title
-  
+  - let o;
+  - let items = results;
   div(class="container-fuild")
     div(class="row")
       each result,index in results
@@ -10,6 +11,9 @@ block content
           p #{result.Types}
           p #{result.NumberOfLang}
           p #{result.Data}  
+          a(href = "language/detail/?id=" + result._id) detail --
+          a(href = "language/update/?id=" + result._id) update --
+          a(href = "language/delete/?id=" + result._id) delete
 
   script.
    function buy(element){

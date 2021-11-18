@@ -12,5 +12,12 @@ router.get('/detail', language_controlers.language_view_one_Page);
 
 /* GET create language page */ 
 router.get('/create', language_controlers.language_create_Page); 
+
+/* GET create update page */ 
+router.get('/update', language_controlers.language_update_Page); 
+
+/* GET create language page */
+router.get('/delete', language_controlers.language_delete_Page);
+
  
 module.exports = router;

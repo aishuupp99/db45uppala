@@ -1,0 +1,45 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  - let languageid = toShow._id 
+  - let Types = toShow.Types
+  - let NumberOfLang = toShow.NumberOfLang
+  - let Data = toShow.Data 
+   
+  div.row(class='mb-2') 
+    div.mr-1 ID is 
+    div #{languageid} 
+  - let actionid = "/resource/languages/" + languageid 
+  form(id='languageForm', action= actionid, method="PUT") 
+    div.form-group 
+        label.languageAttr(for='Types') Types 
+        input#Types(type='text', name='language_type', value= Types ) 
+    div.form-group 
+        label.languageAttr(for='size') NumberOfLang  
+        input#NumberOfLang(type='number', name='size', value= NumberOfLang ) 
+    div.form-group 
+        label.languageAttr(for='cost') Data
+        input#Data(type='text', name='cost', value= Data ) 
+    input(type="submit") 
+
+    button(class="btn btn-secondary m-2" onclick="window.location.href='/language'") Cancel 
+ 
+  script. 
+    document.forms['languageForm'].addEventListener('submit', (event) => { 
+      event.preventDefault(); 
+      // TODO do something here to show user that form is being submitted 
+      fetch(event.target.action, { 
+        method: 'PUT', 
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
+      }).then((resp) => { 
+        return resp.json(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Update succeded") 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Update failed " + error ) 
+      }); 
+    }); 

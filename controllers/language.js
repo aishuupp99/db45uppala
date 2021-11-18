@@ -120,3 +120,46 @@ exports.language_create_Page =  function(req, res) {
         res.send(`{'error': '${err}'}`); 
     } 
 }; 
+
+// Handle building the view for updating a language. 
+// query provides the id 
+exports.language_update_Page =  async function(req, res) { 
+    console.log("update view for item "+req.query.id) 
+    try{ 
+        let result = await language.findById(req.query.id) 
+        res.render('languageupdate', { title: 'language Update', toShow: result }); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 
+
+
+// Handle building the view for updating a language.
+// query provides the id
+exports.language_update_Page = async function(req, res) {
+    console.log("update view for item "+req.query.id)
+    try{
+    let result = await language.findById(req.query.id)
+    res.render('languageupdate', { title: 'language Update', toShow: result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+   };
+
+// Handle a delete one view with id from query
+exports.language_delete_Page = async function(req, res) {
+    console.log("Delete view for id " + req.query.id)
+    try{
+    result = await language.findById(req.query.id)
+    res.render('languagedelete', { title: 'language Delete', toShow:
+   result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+   };

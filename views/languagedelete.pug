@@ -1,0 +1,51 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  if (toShow == null) 
+    h2 No instance to delete 
+  else 
+    - let languageid = toShow._id 
+    - let Types = toShow.Types 
+    - let NumberOfLang = toShow.NumberOfLang 
+    - let Data = toShow.Data 
+    - let actionid = "/resource/languages/" + languageid 
+    script let actionid = "#{actionid}" 
+    div 
+      div.row 
+        div(class='languageAttr mr-3') language ID is: 
+        div #{languageid}  
+        div(class='languageAttr mr-3') Types is: 
+        div #{Types}
+        div(class='languageAttr mr-3') NumberOfLang is:  
+        div #{NumberOfLang} 
+        div(class='languageAttr mr-3') Data is:  
+        div #{Data}
+        
+ 
+    button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete 
+    button(class="btn btn-secondary m-2" onclick="window.location.href='/language'") Cancel 
+ 
+  script. 
+    function cancel() { 
+      // Go back to the home page for the language collection 
+      window.location.href='/language' 
+    } 
+  script. 
+    function deleteOnid() { 
+      console.log("starting delete") 
+      // delete first 
+      fetch(actionid, { 
+        method: 'DELETE'      // Don't need a body for the delete 
+      }).then((resp) => { 
+        return resp.json(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Delete succeded") 
+        window.location.href='/language' 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Delete failed " + error ) 
+      }); 
+    } 
