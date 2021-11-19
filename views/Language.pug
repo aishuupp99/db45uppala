@@ -5,17 +5,24 @@ block content
   - let o;
   - let items = results;
   div(class="container-fuild")
-    div(class="row")
+    div(class="row m-1")
+    div(class="row row-cols-1 row-col-sm-4 g-6")
       each result,index in results
-        div(class = "col-sm-2" id=index onclick=`buy(${index})`) 
+        - let destination = `dispatch(\"/language/update?id=${result._id}\")`
+           
           p #{result.Types}
           p #{result.NumberOfLang}
           p #{result.Data}  
-          a(href = "language/detail/?id=" + result._id) detail --
-          a(href = "language/update/?id=" + result._id) update --
-          a(href = "language/delete/?id=" + result._id) delete
+          
+          <br><br>
+          button.btn(class="btn-danger ml-1", onclick= destination) Update
 
   script.
    function buy(element){
      alert(`You purchased item ${element+1}.`)
+    }
+
+  script.
+    function dispatch(path){
+      window.location.href=path
     }
