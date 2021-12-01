@@ -15,13 +15,13 @@ block content
   form(id='languageForm', action= actionid, method="PUT") 
     div.form-group 
         label.languageAttr(for='Types') Types 
-        input#Types(type='text', name='language_type', value= Types ) 
+        input#Types(type='text', name='Types', value= Types ) 
     div.form-group 
         label.languageAttr(for='size') NumberOfLang  
-        input#NumberOfLang(type='number', name='size', value= NumberOfLang ) 
+        input#NumberOfLang(type='number', name='NumberOfLang', value= NumberOfLang ) 
     div.form-group 
         label.languageAttr(for='cost') Data
-        input#Data(type='text', name='cost', value= Data ) 
+        input#Data(type='text', name='Data', value= Data ) 
     input(type="submit") 
 
     button(class="btn btn-secondary m-2" onclick="window.location.href='/language'") Cancel 

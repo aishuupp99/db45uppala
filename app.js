@@ -39,21 +39,21 @@ async function recreateDB(){
  
 
  let instance1 = new
-Language({"Types":"Java", "NumberOfLang":2,"Data":"Primitive"});
+Language({"Types":"Java", NumberOfLang:2,"Data":"Primitive"});
  instance1.save( function(err,doc) {
  if(err) return console.error(err);
  console.log("First object saved")
  });
 
  let instance2 = new
- Language({"Types":"Python", "NumberOfLang":"1","Data":"Dictionary"});
+ Language({"Types":"Python", NumberOfLang:1,"Data":"Dictionary"});
   instance2.save( function(err,doc) {
   if(err) return console.error(err);
   console.log("Second object saved")
   });
 
  let instance3 = new
-Language({"Types":"C", "NumberOfLang":"3","Data":"String"});
+Language({"Types":"C", NumberOfLang:3,"Data":"String"});
  instance3.save( function(err,doc) {
  if(err) return console.error(err);
  console.log("Third object saved")
@@ -102,7 +102,7 @@ app.use(passport.session());
  //Use the existing connection
  //The Account model
  var Account =require('./models/account');
- 
+
  passport.use(new LocalStrategy(Account.authenticate()));
  passport.serializeUser(Account.serializeUser());
  passport.deserializeUser(Account.deserializeUser());

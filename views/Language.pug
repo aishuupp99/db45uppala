@@ -6,6 +6,7 @@ block content
   - let items = results;
   div(class="container-fuild")
     div(class="row m-1")
+    a(class="btn btn-primary ml-1", href= "/Year/create") Create
     div(class="row row-cols-1 row-col-sm-4 g-6")
       each result,index in results
         - let destination = `dispatch(\"/language/update?id=${result._id}\")`
@@ -15,7 +16,9 @@ block content
           p #{result.Data}  
           
           <br><br>
-          button.btn(class="btn-danger ml-1", onclick= destination) Update
+          a(class="btn btn-primary ml-1", href= "/Year/update?id="+result._id) Update
+          a(class="btn btn-secondary ml-1", href= "/language/detail?id="+result._id) Detail
+          a(class="btn btn-danger ml-1", href= "/language/delete?id="+result._id) Delete
 
   script.
    function buy(element){

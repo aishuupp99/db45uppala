@@ -1,10 +1,8 @@
-const { MisdirectedRequest } = require("http-errors")
 const mongoose = require("mongoose")
 const languageSchema = mongoose.Schema({
-Types: String,
-Data: String,
-NumberOfLang: Number
+Types:{type:String,required:true},
+Data: {type:String,required:true},
+NumberOfLang: {type:Number, min:1,max:45},
 })
-module.exports = mongoose.model("Language",
-languageSchema)
+module.exports = mongoose.model("Language",languageSchema);
 
